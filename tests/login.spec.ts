@@ -1,0 +1,77 @@
+import { test, expect, Page, Browser, chromium } from '@playwright/test';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+import LoginPage from '../page-objects/LoginPage';
+
+test.use({storageState:{cookies:[],origins:[]}});
+
+test('valid login',async ({})=>{
+
+const username= process.env.VALID_USERNAME;
+const password = process.env.VALID_PASSWORD;
+
+const browser: Browser = await chromium.launch({headless:false});
+    const context = await browser.newContext();
+
+const page: Page = await context.newPage();
+    //given
+    const loginPage = new LoginPage(page);
+    await loginPage.navigate();
+
+    //when
+    await loginPage.Login(username,password);
+
+    //then
+    await loginPage.assertValidLogin(page);
+
+});
+
+
+test('invalid login',async({page})=>{
+    const invaliUsername= process.env.INVALID_USERNAME;
+    const invalidPassword=process.env.INVALID_PASSWORD;
+
+    //given
+    const loginPage = new LoginPage(page);
+    await loginPage.navigate();
+
+    //when
+    await loginPage.Login(invaliUsername,invalidPassword);
+
+    //then
+    await loginPage.assertInvalidPasswordLogin();
+})
+
+
+test('missing username',async({page})=>{
+    const missingUsername= ''
+    const validPassword=process.env.VALID_PASSWORD;
+
+    //given
+    const loginPage = new LoginPage(page);
+    await loginPage.navigate();
+
+    //when 
+    await loginPage.Login(missingUsername, validPassword);
+
+    //then
+    await loginPage.assertUsernameRequiredLogin();
+})
+
+
+test('missing password',async({page})=>{
+    const validUsername= process.env.VALID_USERNAME
+    const missingPassword='';
+
+    //given
+    const loginPage = new LoginPage(page);
+    await loginPage.navigate();
+
+    //when 
+    await loginPage.Login(validUsername,missingPassword);
+
+    //then
+    await loginPage.assertPasswordRequiredLogin();
+})
