@@ -7,15 +7,15 @@ import LoginPage from '../page-objects/LoginPage';
 
 test.use({storageState:{cookies:[],origins:[]}});
 
-test('valid login',async ({})=>{
+test('valid login',async ({page})=>{
 
 const username= process.env.VALID_USERNAME;
 const password = process.env.VALID_PASSWORD;
 
-const browser: Browser = await chromium.launch({headless:false});
-    const context = await browser.newContext();
+//const browser: Browser = await chromium.launch({headless:false});
+//const context = await browser.newContext();
 
-const page: Page = await context.newPage();
+//const page: Page = await context.newPage();
     //given
     const loginPage = new LoginPage(page);
     await loginPage.navigate();
