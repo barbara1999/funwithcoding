@@ -11,13 +11,6 @@ import path from 'path';
 test.use({ storageState: path.resolve(__dirname, '../playwright/.auth/user.json') });
 
 
-/*
-test.beforeEach(async ({page})=>{
-    await page.goto('https://www.saucedemo.com/');
-});
-
-*/
-
 test('open item',async ({page})=>{  
 
         //given
@@ -43,6 +36,7 @@ test('back to Products page', async({page})=>{
        await productPage.clickOnItem();
        await productPage.clickOnBackToProductsButton();
 
+        //then
        await productPage.assertUrlInventory();
   
 })
@@ -53,7 +47,10 @@ test('add item to chart',async({page})=>{
      const productPage = new ProductPage(page);
      productPage.navigate();
 
+     //when
      await productPage.clickOnAddToChartButton();
+
+     //then
      await productPage.assertCartBadgeCount('1');
 
 })
