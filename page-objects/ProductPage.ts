@@ -19,7 +19,8 @@ class ProductPage {
     }
 
     async navigate() {
-        await this.page.goto('https://www.saucedemo.com/inventory.html');
+        await this.page.goto('https://www.saucedemo.com/inventory.html', { waitUntil: 'domcontentloaded' });
+        await expect(this.firstItem).toBeVisible();
     }
 
     public async clickOnItem() {
