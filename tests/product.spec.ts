@@ -11,47 +11,47 @@ import path from 'path';
 test.use({ storageState: path.resolve(__dirname, '../playwright/.auth/user.json') });
 
 
-test('open item',async ({page})=>{  
+test('open item', async ({ page }) => {
 
-        //given
-       const productPage = new ProductPage(page);
-       productPage.navigate();
+    //given
+    const productPage = new ProductPage(page);
+    productPage.navigate();
 
-       //when
-        await productPage.clickOnItem();
+    //when
+    await productPage.clickOnItem();
 
-        //then
-        await productPage.assertItemNameVisible();
-    
-    });
+    //then
+    await productPage.assertItemNameVisible();
+
+});
 
 
-test('back to Products page', async({page})=>{
+test('back to Products page', async ({ page }) => {
 
-      //given
-      const productPage = new ProductPage(page);
-      productPage.navigate();
+    //given
+    const productPage = new ProductPage(page);
+    productPage.navigate();
 
-      //when
-       await productPage.clickOnItem();
-       await productPage.clickOnBackToProductsButton();
+    //when
+    await productPage.clickOnItem();
+    await productPage.clickOnBackToProductsButton();
 
-        //then
-       await productPage.assertUrlInventory();
-  
+    //then
+    await productPage.assertUrlInventory();
+
 })
 
-test('add item to chart',async({page})=>{
+test('add item to chart', async ({ page }) => {
 
-     //given
-     const productPage = new ProductPage(page);
-     productPage.navigate();
+    //given
+    const productPage = new ProductPage(page);
+    productPage.navigate();
 
-     //when
-     await productPage.clickOnAddToChartButton();
+    //when
+    await productPage.clickOnAddToChartButton();
 
-     //then
-     await productPage.assertCartBadgeCount('1');
+    //then
+    await productPage.assertCartBadgeCount('1');
 
 })
 
