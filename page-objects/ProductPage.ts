@@ -5,7 +5,7 @@ class ProductPage {
     firstItem: Locator;
     cartBadge: Locator
     itemName: Locator;
-    addToChartButton: Locator;
+    addToCartButton: Locator;
     backToProductsButton: Locator;
     readonly page: Page;
 
@@ -15,7 +15,7 @@ class ProductPage {
         this.cartBadge = page.locator('[data-test="shopping-cart-badge"]');
         this.itemName = page.locator('[data-test="inventory-item-name"]');
         this.backToProductsButton = page.locator('#back-to-products');
-        this.addToChartButton = page.locator('#add-to-cart-sauce-labs-backpack');
+        this.addToCartButton = page.locator('#add-to-cart-sauce-labs-backpack');
     }
 
     async navigate() {
@@ -33,9 +33,9 @@ class ProductPage {
         await this.backToProductsButton.click();
     }
 
-    public async clickOnAddToChartButton() {
-        await expect(this.addToChartButton).toBeVisible();
-        await this.addToChartButton.click();
+    public async clickOnAddToCartButton() {
+        await expect(this.addToCartButton).toBeVisible();
+        await this.addToCartButton.click();
     }
 
     public async assertItemNameVisible() {
@@ -48,9 +48,9 @@ class ProductPage {
 
     }
 
-    public async assertCartBadgeCount(expectedCound: string) {
+    public async assertCartBadgeCount(expectedCount: string) {
         await expect(this.cartBadge).toBeVisible();
-        await expect(this.cartBadge).toHaveText(expectedCound);
+        await expect(this.cartBadge).toHaveText(expectedCount);
     }
 }
 
