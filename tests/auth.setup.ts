@@ -11,8 +11,8 @@ const authFile= path.join(__dirname,'../playwright/.auth/user.json');
 
 setup('authenticate',async ({page})=>{
 
-const username= process.env.VALID_USERNAME;
-const password = process.env.VALID_PASSWORD;
+const username = process.env.VALID_USERNAME as string;
+const password = process.env.VALID_PASSWORD as string;
 
     //given
     const loginPage = new LoginPage(page);

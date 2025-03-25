@@ -41,14 +41,14 @@ test('back to Products page', async ({ page }) => {
 
 })
 
-test('add item to chart', async ({ page }) => {
+test('add item to cart', async ({ page }) => {
 
     //given
     const productPage = new ProductPage(page);
     productPage.navigate();
 
     //when
-    await productPage.clickOnAddToChartButton();
+    await productPage.clickOnAddToCartButton();
 
     //then
     await productPage.assertCartBadgeCount('1');
