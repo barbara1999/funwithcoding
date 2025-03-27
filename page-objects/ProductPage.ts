@@ -7,7 +7,6 @@ class ProductPage {
     itemName: Locator;
     addToCartButton: Locator;
     backToProductsButton: Locator;
-    filterButton: Locator;
     sortButton: Locator;
     itemPrice: Locator;
 
