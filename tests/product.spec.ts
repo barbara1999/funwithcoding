@@ -68,7 +68,7 @@ test('sort prices from low to high', async ({ page }) => {
     productPage.assertPriceSortedFromLowToHigh(page);
 })
 
-test.only('sort prices from high to low', async ({ page }) => {
+test('sort prices from high to low', async ({ page }) => {
     //given
     const productPage = new ProductPage(page);
     productPage.navigate();
