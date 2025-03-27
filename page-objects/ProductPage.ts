@@ -20,7 +20,7 @@ class ProductPage {
         this.backToProductsButton = page.locator('#back-to-products');
         this.addToCartButton = page.locator('#add-to-cart-sauce-labs-backpack');
         this.sortButton = page.locator('[data-test="product-sort-container"]');
-        this.itemPrice= page.locator('.inventory_item_price');
+        this.itemPrice = page.locator('.inventory_item_price');
 
     }
 
@@ -41,15 +41,15 @@ class ProductPage {
         await this.addToCartButton.click();
     }
 
-    public async SortPriceFromLowToHigh(){
-       await expect(this.sortButton).toBeVisible();
-       await this.sortButton.selectOption({ value: 'lohi' });
+    public async SortPriceFromLowToHigh() {
+        await expect(this.sortButton).toBeVisible();
+        await this.sortButton.selectOption({ value: 'lohi' });
     }
 
-    public async SortPriceFromHighToLow(){
+    public async SortPriceFromHighToLow() {
         await expect(this.sortButton).toBeVisible();
         await this.sortButton.selectOption({ value: 'hilo' });
-     }
+    }
 
     public async assertItemNameVisible() {
         await expect(this.itemName).toBeVisible();
@@ -66,8 +66,7 @@ class ProductPage {
         await expect(this.cartBadge).toHaveText(expectedCount);
     }
 
-    public async assertPriceSortedFromLowToHigh(page: Page){
-        await page.waitForSelector('.inventory_item_price');
+    public async assertPriceSortedFromLowToHigh(page: Page) {
         const pricesElements = this.itemPrice.allTextContents();
         const prices = (await pricesElements).map(price => parseFloat(price.replace('$', '')));
         const sortedPrices = [...prices].sort((a, b) => a - b);
@@ -75,11 +74,10 @@ class ProductPage {
 
     }
 
-    public async assertPriceSortedFromHighToLow(page: Page){
-        await page.waitForSelector('.inventory_item_price');
+    public async assertPriceSortedFromHighToLow(page: Page) {
         const pricesElements = this.itemPrice.allTextContents();
         const prices = (await pricesElements).map(price => parseFloat(price.replace('$', '')));
-        const sortedPrices = [...prices].sort((a, b) => b-a);
+        const sortedPrices = [...prices].sort((a, b) => b - a);
         expect(prices).toEqual(sortedPrices);
 
     }
