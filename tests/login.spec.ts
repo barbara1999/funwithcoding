@@ -5,19 +5,19 @@ dotenv.config();
 
 import LoginPage from '../page-objects/LoginPage';
 
-test.use({storageState:{cookies:[],origins:[]}});
+test.use({ storageState: { cookies: [], origins: [] } });
 
-test('valid login',async ({page})=>{
+test('valid login', async ({ page }) => {
 
-const username= process.env.VALID_USERNAME as string;
-const password = process.env.VALID_PASSWORD as string;
+    const username = process.env.VALID_USERNAME as string;
+    const password = process.env.VALID_PASSWORD as string;
 
     //given
     const loginPage = new LoginPage(page);
     await loginPage.navigate();
 
     //when
-    await loginPage.Login(username,password);
+    await loginPage.Login(username, password);
 
     //then
     await loginPage.assertValidLogin(page);
@@ -25,25 +25,25 @@ const password = process.env.VALID_PASSWORD as string;
 });
 
 
-test('invalid login',async({page})=>{
-    const invaliUsername= process.env.INVALID_USERNAME as string;
-    const invalidPassword=process.env.INVALID_PASSWORD as string;
+test('invalid login', async ({ page }) => {
+    const invaliUsername = process.env.INVALID_USERNAME as string;
+    const invalidPassword = process.env.INVALID_PASSWORD as string;
 
     //given
     const loginPage = new LoginPage(page);
     await loginPage.navigate();
 
     //when
-    await loginPage.Login(invaliUsername,invalidPassword);
+    await loginPage.Login(invaliUsername, invalidPassword);
 
     //then
     await loginPage.assertInvalidPasswordLogin();
 })
 
 
-test('missing username',async({page})=>{
-    const missingUsername= ''
-    const validPassword=process.env.VALID_PASSWORD as string;
+test('missing username', async ({ page }) => {
+    const missingUsername = ''
+    const validPassword = process.env.VALID_PASSWORD as string;
 
     //given
     const loginPage = new LoginPage(page);
@@ -57,16 +57,16 @@ test('missing username',async({page})=>{
 })
 
 
-test('missing password',async({page})=>{
-    const validUsername= process.env.VALID_USERNAME as string;
-    const missingPassword='';
+test('missing password', async ({ page }) => {
+    const validUsername = process.env.VALID_USERNAME as string;
+    const missingPassword = '';
 
     //given
     const loginPage = new LoginPage(page);
     await loginPage.navigate();
 
     //when 
-    await loginPage.Login(validUsername,missingPassword);
+    await loginPage.Login(validUsername, missingPassword);
 
     //then
     await loginPage.assertPasswordRequiredLogin();

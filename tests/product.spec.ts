@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -54,5 +54,32 @@ test('add item to cart', async ({ page }) => {
     await productPage.assertCartBadgeCount('1');
 
 })
+
+
+test('sort prices from low to high', async ({ page }) => {
+    //given
+    const productPage = new ProductPage(page);
+    productPage.navigate();
+
+    //when
+    await productPage.SortPriceFromLowToHigh();
+
+    //then
+    productPage.assertPriceSortedFromLowToHigh(page);
+})
+
+test('sort prices from high to low', async ({ page }) => {
+    //given
+    const productPage = new ProductPage(page);
+    productPage.navigate();
+
+    //when
+    await productPage.SortPriceFromHighToLow();
+
+    //then
+    productPage.assertPriceSortedFromHighToLow(page);
+})
+
+
 
 
