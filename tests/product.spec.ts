@@ -56,3 +56,30 @@ test('add item to cart', async ({ page }) => {
 })
 
 
+test('sort prices from low to high', async ({ page }) => {
+    //given
+    const productPage = new ProductPage(page);
+    productPage.navigate();
+
+    //when
+    await productPage.SortPriceFromLowToHigh();
+
+    //then
+    productPage.assertPriceSortedFromLowToHigh(page);
+})
+
+test.only('sort prices from high to low', async ({ page }) => {
+    //given
+    const productPage = new ProductPage(page);
+    productPage.navigate();
+
+    //when
+    await productPage.SortPriceFromHighToLow();
+
+    //then
+    productPage.assertPriceSortedFromHighToLow(page);
+})
+
+
+
+
