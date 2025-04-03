@@ -1,0 +1,29 @@
+import test from "@playwright/test";
+import ProductPage from "../page-objects/ProductPage";
+import CartPage from "../page-objects/CartPage";
+
+import { firstName, lastName, postalCode} from '../utils/checkout_credentials'
+
+
+test.only('buy an item', async ({ page }) => {
+
+    //given
+    const productPage = new ProductPage(page);
+    const cartPage= new CartPage(page);
+    productPage.navigate();
+    await productPage.clickOnAddToCartButton();
+    await productPage.GoToCart();
+
+    //when
+    await cartPage.clickOnCheckoutButton();
+    await cartPage.fillFirstName(firstName);
+    await cartPage.fillLastName(lastName);
+    await cartPage.fillPortalCode(postalCode);
+    await cartPage.clickOnContinueButton();
+    await cartPage.clickOnFinishButton();
+
+    //then
+    await cartPage.assertSuccessfulCheckout();
+   
+
+})

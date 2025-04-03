@@ -82,4 +82,3 @@ test('sort prices from high to low', async ({ page }) => {
 
 
 
-

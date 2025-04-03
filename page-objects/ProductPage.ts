@@ -51,6 +51,10 @@ class ProductPage {
         await this.sortButton.selectOption({ value: 'hilo' });
     }
 
+    public async GoToCart(){
+        await this.cartBadge.click();
+    }
+
     public async assertItemNameVisible() {
         await expect(this.itemName).toBeVisible();
     }
