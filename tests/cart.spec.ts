@@ -5,7 +5,7 @@ import CartPage from "../page-objects/CartPage";
 import { firstName, lastName, postalCode } from '../utils/checkout_credentials'
 
 
-test.only('buy an item', async ({ page }) => {
+test('buy an item', async ({ page }) => {
 
     //given
     const productPage = new ProductPage(page);
