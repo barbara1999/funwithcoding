@@ -1,5 +1,6 @@
 # E2E Tests for demo shop
-Link to demo shop: https://www.saucedemo.com/
+Link to demo shop: [Swag Labs](https://www.saucedemo.com/)
+
 
 ## Usage
 
