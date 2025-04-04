@@ -2,14 +2,14 @@ import test from "@playwright/test";
 import ProductPage from "../page-objects/ProductPage";
 import CartPage from "../page-objects/CartPage";
 
-import { firstName, lastName, postalCode} from '../utils/checkout_credentials'
+import { firstName, lastName, postalCode } from '../utils/checkout_credentials'
 
 
-test.only('buy an item', async ({ page }) => {
+test('buy an item', async ({ page }) => {
 
     //given
     const productPage = new ProductPage(page);
-    const cartPage= new CartPage(page);
+    const cartPage = new CartPage(page);
     productPage.navigate();
     await productPage.clickOnAddToCartButton();
     await productPage.GoToCart();
@@ -24,6 +24,6 @@ test.only('buy an item', async ({ page }) => {
 
     //then
     await cartPage.assertSuccessfulCheckout();
-   
+
 
 })
