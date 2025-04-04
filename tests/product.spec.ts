@@ -62,7 +62,7 @@ test('sort prices from low to high', async ({ page }) => {
     productPage.navigate();
 
     //when
-    await productPage.SortPriceFromLowToHigh();
+    await productPage.sortPriceFromLowToHigh();
 
     //then
     productPage.assertPriceSortedFromLowToHigh(page);
@@ -74,12 +74,11 @@ test('sort prices from high to low', async ({ page }) => {
     productPage.navigate();
 
     //when
-    await productPage.SortPriceFromHighToLow();
+    await productPage.sortPriceFromHighToLow();
 
     //then
     productPage.assertPriceSortedFromHighToLow(page);
 })
-
 
 
 
