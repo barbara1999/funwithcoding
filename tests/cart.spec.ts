@@ -5,7 +5,7 @@ import CartPage from "../page-objects/CartPage";
 import { firstName, lastName, postalCode } from '../utils/checkout_credentials'
 
 
-test('buy an item', async ({ page }) => {
+test.only('buy an item', async ({ page }) => {
 
     //given
     const productPage = new ProductPage(page);
@@ -16,9 +16,7 @@ test('buy an item', async ({ page }) => {
 
     //when
     await cartPage.clickOnCheckoutButton();
-    await cartPage.fillFirstName(firstName);
-    await cartPage.fillLastName(lastName);
-    await cartPage.fillPortalCode(postalCode);
+    await cartPage.fillBuyerPersonalInfo(firstName, lastName, postalCode);
     await cartPage.clickOnContinueButton();
     await cartPage.clickOnFinishButton();
 

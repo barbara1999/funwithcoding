@@ -27,15 +27,9 @@ class CartPage {
         await this.checkoutButton.click();
     }
 
-    public async fillFirstName(firstName: string) {
+    public async fillBuyerPersonalInfo(firstName: string, lastName: string, postalCode: string) {
         await this.firstNameInput.fill(firstName);
-    }
-
-    public async fillLastName(lastName: string) {
         await this.lastNameInput.fill(lastName);
-    }
-
-    public async fillPortalCode(postalCode: string) {
         await this.postalCodeInput.fill(postalCode);
     }
 
