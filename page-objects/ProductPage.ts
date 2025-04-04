@@ -41,17 +41,17 @@ class ProductPage {
         await this.addToCartButton.click();
     }
 
-    public async SortPriceFromLowToHigh() {
+    public async sortPriceFromLowToHigh() {
         await expect(this.sortButton).toBeVisible();
         await this.sortButton.selectOption({ value: 'lohi' });
     }
 
-    public async SortPriceFromHighToLow() {
+    public async sortPriceFromHighToLow() {
         await expect(this.sortButton).toBeVisible();
         await this.sortButton.selectOption({ value: 'hilo' });
     }
 
-    public async GoToCart(){
+    public async goToCart(){
         await this.cartBadge.click();
     }
 

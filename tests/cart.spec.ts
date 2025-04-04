@@ -12,7 +12,7 @@ test('buy an item', async ({ page }) => {
     const cartPage = new CartPage(page);
     productPage.navigate();
     await productPage.clickOnAddToCartButton();
-    await productPage.GoToCart();
+    await productPage.goToCart();
 
     //when
     await cartPage.clickOnCheckoutButton();
