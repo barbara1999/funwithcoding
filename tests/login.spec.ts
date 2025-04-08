@@ -1,9 +1,8 @@
-import { test, expect, Page, Browser, chromium } from '@playwright/test';
+import { test } from '@playwright/test';
 import dotenv from 'dotenv';
+import LoginPage from '../page-objects/LoginPage';
 
 dotenv.config();
-
-import LoginPage from '../page-objects/LoginPage';
 
 test.use({ storageState: { cookies: [], origins: [] } });
 
@@ -17,7 +16,7 @@ test('valid login', async ({ page }) => {
     await loginPage.navigate();
 
     //when
-    await loginPage.Login(username, password);
+    await loginPage.login(username, password);
 
     //then
     await loginPage.assertValidLogin(page);
@@ -34,7 +33,7 @@ test('invalid login', async ({ page }) => {
     await loginPage.navigate();
 
     //when
-    await loginPage.Login(invaliUsername, invalidPassword);
+    await loginPage.login(invaliUsername, invalidPassword);
 
     //then
     await loginPage.assertInvalidPasswordLogin();
@@ -50,7 +49,7 @@ test('missing username', async ({ page }) => {
     await loginPage.navigate();
 
     //when 
-    await loginPage.Login(missingUsername, validPassword);
+    await loginPage.login(missingUsername, validPassword);
 
     //then
     await loginPage.assertUsernameRequiredLogin();
@@ -66,7 +65,7 @@ test('missing password', async ({ page }) => {
     await loginPage.navigate();
 
     //when 
-    await loginPage.Login(validUsername, missingPassword);
+    await loginPage.login(validUsername, missingPassword);
 
     //then
     await loginPage.assertPasswordRequiredLogin();

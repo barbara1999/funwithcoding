@@ -1,5 +1,4 @@
 import { expect, Locator, Page } from "@playwright/test";
-import { randomFill } from "crypto";
 
 class CartPage {
     checkoutButton: Locator;
@@ -9,7 +8,6 @@ class CartPage {
     continueButton: Locator;
     finishButton: Locator;
     successfulCheckoutMessage: Locator
-
     readonly page: Page;
 
     constructor(page: Page) {

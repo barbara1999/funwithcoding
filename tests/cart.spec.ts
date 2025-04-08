@@ -1,12 +1,9 @@
 import test from "@playwright/test";
 import ProductPage from "../page-objects/ProductPage";
 import CartPage from "../page-objects/CartPage";
-
 import { firstName, lastName, postalCode } from '../utils/checkout_credentials'
 
-
 test('buy an item', async ({ page }) => {
-
     //given
     const productPage = new ProductPage(page);
     const cartPage = new CartPage(page);
@@ -22,6 +19,4 @@ test('buy an item', async ({ page }) => {
 
     //then
     await cartPage.assertSuccessfulCheckout();
-
-
 })
