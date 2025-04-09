@@ -1,6 +1,5 @@
 import { expect, Locator, Page } from "@playwright/test";
 
-
 class ProductPage {
     firstItem: Locator;
     cartBadge: Locator
@@ -9,7 +8,6 @@ class ProductPage {
     backToProductsButton: Locator;
     sortButton: Locator;
     itemPrice: Locator;
-
     readonly page: Page;
 
     constructor(page: Page) {
@@ -21,7 +19,6 @@ class ProductPage {
         this.addToCartButton = page.locator('#add-to-cart-sauce-labs-backpack');
         this.sortButton = page.locator('[data-test="product-sort-container"]');
         this.itemPrice = page.locator('.inventory_item_price');
-
     }
 
     async navigate() {
@@ -62,7 +59,6 @@ class ProductPage {
     public async assertUrlInventory() {
         await this.page.goto('https://www.saucedemo.com/inventory.html');
         await expect(this.page).toHaveURL('https://www.saucedemo.com/inventory.html');
-
     }
 
     public async assertCartBadgeCount(expectedCount: string) {
@@ -75,7 +71,6 @@ class ProductPage {
         const prices = (await pricesElements).map(price => parseFloat(price.replace('$', '')));
         const sortedPrices = [...prices].sort((a, b) => a - b);
         expect(prices).toEqual(sortedPrices);
-
     }
 
     public async assertPriceSortedFromHighToLow(page: Page) {
@@ -83,7 +78,6 @@ class ProductPage {
         const prices = (await pricesElements).map(price => parseFloat(price.replace('$', '')));
         const sortedPrices = [...prices].sort((a, b) => b - a);
         expect(prices).toEqual(sortedPrices);
-
     }
 }
 
