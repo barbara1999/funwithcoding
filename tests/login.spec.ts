@@ -7,7 +7,6 @@ dotenv.config();
 test.use({ storageState: { cookies: [], origins: [] } });
 
 test('valid login', async ({ page }) => {
-
     const username = process.env.VALID_USERNAME as string;
     const password = process.env.VALID_PASSWORD as string;
 
@@ -22,7 +21,6 @@ test('valid login', async ({ page }) => {
     await loginPage.assertValidLogin(page);
 
 });
-
 
 test('invalid login', async ({ page }) => {
     const invaliUsername = process.env.INVALID_USERNAME as string;
@@ -39,7 +37,6 @@ test('invalid login', async ({ page }) => {
     await loginPage.assertInvalidPasswordLogin();
 })
 
-
 test('missing username', async ({ page }) => {
     const missingUsername = ''
     const validPassword = process.env.VALID_PASSWORD as string;
@@ -54,7 +51,6 @@ test('missing username', async ({ page }) => {
     //then
     await loginPage.assertUsernameRequiredLogin();
 })
-
 
 test('missing password', async ({ page }) => {
     const validUsername = process.env.VALID_USERNAME as string;

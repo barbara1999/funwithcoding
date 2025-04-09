@@ -52,6 +52,3 @@ test('sort prices from high to low', async ({ page }) => {
     //then
     productPage.assertPriceSortedFromHighToLow(page);
 })
-
-
-
