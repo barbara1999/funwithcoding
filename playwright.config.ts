@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import path from 'path';
 
 /**
  * Read environment variables from file.
@@ -30,10 +31,12 @@ export default defineConfig({
     baseURL: 'https://www.saucedemo.com/',
     actionTimeout: 10000,
     navigationTimeout: 10000,
+    screenshot: 'on',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
+
 
   expect: {
     toHaveScreenshot: { maxDiffPixels: 100 },

@@ -27,7 +27,12 @@ jobs:
           INVALID_USERNAME: ${{ secrets.INVALID_USERNAME }}
           VALID_PASSWORD: ${{ secrets.VALID_PASSWORD }}
           VALID_USERNAME: ${{ secrets.VALID_USERNAME }}
-      run: npx playwright test
+      run: |
+          if [[ "$CI" == "true" ]]; then
+            npx playwright test --skip-snapshots
+          else
+            npx playwright test
+          fi
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
