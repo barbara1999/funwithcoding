@@ -7,6 +7,9 @@ node_modules/
 /playwright/.cache/
 playwright/.auth/
 .env
+/login.spec.ts-snapshosts/
+/product.spec.ts-snapshosts/
+/cart.spec.ts-snapshosts/
 
 
 

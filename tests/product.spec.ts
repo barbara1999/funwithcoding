@@ -1,4 +1,4 @@
-import { test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import ProductPage from '../page-objects/ProductPage';
 import path from 'path';
 
@@ -9,6 +9,7 @@ let productPage: ProductPage;
 test.beforeEach(async ({ page }) => {
     productPage = new ProductPage(page);
     productPage.navigate();
+    await expect(page).toHaveScreenshot();
 });
 
 test('open item', async () => {

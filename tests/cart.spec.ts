@@ -1,4 +1,4 @@
-import test from "@playwright/test";
+import test, { expect } from "@playwright/test";
 import ProductPage from "../page-objects/ProductPage";
 import CartPage from "../page-objects/CartPage";
 import { firstName, lastName, postalCode } from '../utils/checkout_credentials'
@@ -10,6 +10,7 @@ test('buy an item', async ({ page }) => {
     productPage.navigate();
     await productPage.clickOnAddToCartButton();
     await productPage.goToCart();
+    await expect(page).toHaveScreenshot();
 
     //when
     await cartPage.clickOnCheckoutButton();

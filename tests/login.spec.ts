@@ -1,4 +1,4 @@
-import { test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import dotenv from 'dotenv';
 import LoginPage from '../page-objects/LoginPage';
 
@@ -13,13 +13,14 @@ test('valid login', async ({ page }) => {
     //given
     const loginPage = new LoginPage(page);
     await loginPage.navigate();
+    await expect(page).toHaveScreenshot();
 
     //when
     await loginPage.login(username, password);
 
     //then
+    await expect(page).toHaveScreenshot();
     await loginPage.assertValidLogin(page);
-
 });
 
 test('invalid login', async ({ page }) => {
@@ -34,6 +35,7 @@ test('invalid login', async ({ page }) => {
     await loginPage.login(invaliUsername, invalidPassword);
 
     //then
+    await expect(page).toHaveScreenshot();
     await loginPage.assertInvalidPasswordLogin();
 })
 
@@ -49,6 +51,7 @@ test('missing username', async ({ page }) => {
     await loginPage.login(missingUsername, validPassword);
 
     //then
+    await expect(page).toHaveScreenshot();
     await loginPage.assertUsernameRequiredLogin();
 })
 
@@ -64,5 +67,6 @@ test('missing password', async ({ page }) => {
     await loginPage.login(validUsername, missingPassword);
 
     //then
+    await expect(page).toHaveScreenshot();
     await loginPage.assertPasswordRequiredLogin();
 })
