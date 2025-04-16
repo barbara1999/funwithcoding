@@ -9,7 +9,6 @@ let productPage: ProductPage;
 test.beforeEach(async ({ page }) => {
     productPage = new ProductPage(page);
     productPage.navigate();
-    await expect(page).toHaveScreenshot();
 });
 
 test('open item', async () => {
@@ -44,6 +43,7 @@ test('sort prices from low to high', async ({ page }) => {
 
     //then
     productPage.assertPriceSortedFromLowToHigh(page);
+    await expect(page).toHaveScreenshot();
 })
 
 test('sort prices from high to low', async ({ page }) => {
@@ -52,4 +52,5 @@ test('sort prices from high to low', async ({ page }) => {
 
     //then
     productPage.assertPriceSortedFromHighToLow(page);
+    await expect(page).toHaveScreenshot();
 })
