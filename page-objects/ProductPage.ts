@@ -48,7 +48,7 @@ class ProductPage {
         await this.sortButton.selectOption({ value: 'hilo' });
     }
 
-    public async goToCart(){
+    public async goToCart() {
         await this.cartBadge.click();
     }
 
