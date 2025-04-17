@@ -9,7 +9,7 @@ playwright/.auth/
 .env
 /tests/cart.spec.ts-snapshots/
 /tests/product.spec.ts-snapshots/
-/tests/cart.spec.ts-snapshots/
+/tests/login.spec.ts-snapshots/
 
 
 
