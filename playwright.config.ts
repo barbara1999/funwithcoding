@@ -35,6 +35,10 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
 
+  expect: {
+    toHaveScreenshot: { maxDiffPixels: 100 },
+  },
+
   /* Configure projects for major browsers */
   projects: [
     

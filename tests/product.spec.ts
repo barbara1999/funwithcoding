@@ -1,4 +1,4 @@
-import { test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import ProductPage from '../page-objects/ProductPage';
 import path from 'path';
 
@@ -43,6 +43,7 @@ test('sort prices from low to high', async ({ page }) => {
 
     //then
     productPage.assertPriceSortedFromLowToHigh(page);
+    await expect(page).toHaveScreenshot();
 })
 
 test('sort prices from high to low', async ({ page }) => {
@@ -51,4 +52,5 @@ test('sort prices from high to low', async ({ page }) => {
 
     //then
     productPage.assertPriceSortedFromHighToLow(page);
+    await expect(page).toHaveScreenshot();
 })
