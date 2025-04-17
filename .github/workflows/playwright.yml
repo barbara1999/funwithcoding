@@ -29,7 +29,7 @@ jobs:
           VALID_USERNAME: ${{ secrets.VALID_USERNAME }}
           SKIP_SNAPSHOTS: true
       run:
-         npx playwright test
+         npx playwright test --ignore-snapshots
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
