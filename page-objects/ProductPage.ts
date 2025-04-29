@@ -16,7 +16,6 @@ class ProductPage {
         this.cartBadge = page.locator('[data-test="shopping-cart-badge"]');
         this.itemName = page.locator('[data-test="inventory-item-name"]');
         this.backToProductsButton = page.locator('#back-to-products');
-        this.addToCartButton = page.locator('#add-to-cart-sauce-labs-backpack');
         this.sortButton = page.locator('[data-test="product-sort-container"]');
         this.itemPrice = page.locator('.inventory_item_price');
     }
