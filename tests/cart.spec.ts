@@ -36,3 +36,21 @@ test('remove item from cart', async ({ page }) => {
     //then
     await cartPage.assertItemRemoved();
 });
+
+test('verify cart badge count updates', async ({ page }) => {
+    //given
+    const productPage = new ProductPage(page);
+    productPage.navigate();
+    
+    //when
+    await productPage.clickOnAddToCartButton('sauce-labs-backpack');
+    
+    //then
+    await productPage.assertCartBadgeCount('1');
+    
+    //when
+    await productPage.clickOnAddToCartButton('sauce-labs-bike-light');
+    
+    //then
+    await productPage.assertCartBadgeCount('2');
+});

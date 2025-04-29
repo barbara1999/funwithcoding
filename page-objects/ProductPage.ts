@@ -34,8 +34,9 @@ class ProductPage {
         await this.backToProductsButton.click();
     }
 
-    public async clickOnAddToCartButton() {
-        await this.addToCartButton.click();
+    public async clickOnAddToCartButton(productId: string = 'sauce-labs-backpack') {
+        const addToCartButton = this.page.locator(`#add-to-cart-${productId}`);
+        await addToCartButton.click();
     }
 
     public async sortPriceFromLowToHigh() {
