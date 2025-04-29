@@ -21,3 +21,18 @@ test('buy an item', async ({ page }) => {
     //then
     await cartPage.assertSuccessfulCheckout();
 })
+
+test('remove item from cart', async ({ page }) => {
+    //given
+    const productPage = new ProductPage(page);
+    const cartPage = new CartPage(page);
+    productPage.navigate();
+    await productPage.clickOnAddToCartButton();
+    await productPage.goToCart();
+    
+    //when
+    await cartPage.removeItem();
+    
+    //then
+    await cartPage.assertItemRemoved();
+});

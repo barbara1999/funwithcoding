@@ -7,7 +7,8 @@ class CartPage {
     postalCodeInput: Locator;
     continueButton: Locator;
     finishButton: Locator;
-    successfulCheckoutMessage: Locator
+    successfulCheckoutMessage: Locator;
+    removeButton: Locator;
     readonly page: Page;
 
     constructor(page: Page) {
@@ -19,6 +20,7 @@ class CartPage {
         this.continueButton = page.locator('[data-test="continue"]');
         this.finishButton = page.locator('[data-test="finish"]');
         this.successfulCheckoutMessage = page.locator(('[data-test="complete-header"]'));
+        this.removeButton = page.locator('[data-test="remove-sauce-labs-backpack"]');
     }
 
     public async clickOnCheckoutButton() {
@@ -42,6 +44,15 @@ class CartPage {
     public async assertSuccessfulCheckout() {
         await expect(this.successfulCheckoutMessage).toBeVisible();
         await expect(this.successfulCheckoutMessage).toHaveText('Thank you for your order!');
+    }
+
+    public async removeItem() {
+        await this.removeButton.click();
+    }
+
+    public async assertItemRemoved() {
+        await expect(this.removeButton).not.toBeVisible();
+        await expect(this.page.locator('.cart_item')).not.toBeVisible();
     }
 }
 
