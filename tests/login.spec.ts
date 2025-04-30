@@ -70,3 +70,18 @@ test('missing password', async ({ page }) => {
     await expect(page).toHaveScreenshot();
     await loginPage.assertPasswordRequiredLogin();
 })
+
+test('login with locked out user', async ({ page }) => {
+    const lockedOutUsername = process.env.LOCKED_OUT_USERNAME as string;
+    const lockedOutPassword = process.env.VALID_PASSWORD as string;
+
+    //given
+    const loginPage = new LoginPage(page);
+    await loginPage.navigate();
+    
+    //when
+    await loginPage.login(lockedOutUsername, lockedOutPassword);
+    
+    //then
+    await loginPage.assertLockedOutUserError();
+});

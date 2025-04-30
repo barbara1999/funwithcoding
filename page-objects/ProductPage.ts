@@ -16,7 +16,6 @@ class ProductPage {
         this.cartBadge = page.locator('[data-test="shopping-cart-badge"]');
         this.itemName = page.locator('[data-test="inventory-item-name"]');
         this.backToProductsButton = page.locator('#back-to-products');
-        this.addToCartButton = page.locator('#add-to-cart-sauce-labs-backpack');
         this.sortButton = page.locator('[data-test="product-sort-container"]');
         this.itemPrice = page.locator('.inventory_item_price');
     }
@@ -34,8 +33,9 @@ class ProductPage {
         await this.backToProductsButton.click();
     }
 
-    public async clickOnAddToCartButton() {
-        await this.addToCartButton.click();
+    public async clickOnAddToCartButton(productId: string = 'sauce-labs-backpack') {
+        const addToCartButton = this.page.locator(`#add-to-cart-${productId}`);
+        await addToCartButton.click();
     }
 
     public async sortPriceFromLowToHigh() {

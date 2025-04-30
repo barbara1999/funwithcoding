@@ -22,7 +22,7 @@ class LoginPage {
     public async login(username: string, password: string) {
         await this.usernameInput.fill(username);
         await this.passwordInput.fill(password);
-        await this.loginButton.click()
+        await this.loginButton.click();
     }
 
     public async assertValidLogin(page: Page) {
@@ -36,14 +36,18 @@ class LoginPage {
 
     public async assertUsernameRequiredLogin() {
         await expect(this.errorLogin).toBeVisible();
-        await expect(this.errorLogin).toHaveText('Epic sadface: Username is required')
+        await expect(this.errorLogin).toHaveText('Epic sadface: Username is required');
     }
 
     public async assertPasswordRequiredLogin() {
         await expect(this.errorLogin).toBeVisible();
-        await expect(this.errorLogin).toHaveText('Epic sadface: Password is required')
+        await expect(this.errorLogin).toHaveText('Epic sadface: Password is required');
     }
 
+    public async assertLockedOutUserError() {
+        await expect(this.errorLogin).toBeVisible();
+        await expect(this.errorLogin).toHaveText('Epic sadface: Sorry, this user has been locked out.');
+    }
 }
 
 export default LoginPage;

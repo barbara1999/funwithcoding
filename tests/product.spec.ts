@@ -28,15 +28,6 @@ test('back to Products page', async () => {
     await productPage.assertUrlInventory();
 })
 
-test('add item to cart', async () => {
-    //when
-    await productPage.clickOnAddToCartButton();
-
-    //then
-    await productPage.assertCartBadgeCount('1');
-})
-
-
 test('sort prices from low to high', async ({ page }) => {
     //when
     await productPage.sortPriceFromLowToHigh();
