@@ -27,7 +27,7 @@ test('remove item from cart', async ({ page }) => {
     const productPage = new ProductPage(page);
     const cartPage = new CartPage(page);
     productPage.navigate();
-    await productPage.clickOnAddToCartButton();
+    await productPage.clickOnAddToCartButton('sauce-labs-backpack');
     await productPage.goToCart();
     
     //when
